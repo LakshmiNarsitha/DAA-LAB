@@ -1,10 +1,5 @@
 #include <stdio.h>
 #include<stdlib.h>
-int* sortArray(int* nums, int numsSize, int* returnSize){
-  *returnSize=numsSize;  
-  mergesort(nums, 0, numsSize-1);
-  return nums;
-}
 void merge(int* nums, int l, int m, int r)
 {
     int i,j;
@@ -61,6 +56,11 @@ void mergesort(int* nums,int l,int h)
         merge(nums,l,m,h);
     }
 }
+int* sortArray(int* nums, int numsSize, int* returnSize){
+  *returnSize=numsSize;  
+  mergesort(nums, 0, numsSize-1);
+  return nums;
+}
 
 void display(int *res,int n)
 {
@@ -73,15 +73,14 @@ void display(int *res,int n)
 }
 void main()
 {
-    int *nums;
     int n;
     printf("enter no of elements in array : ");
     scanf("%d",&n);
-    nums=(int*)(malloc(n*sizeof(int)));
+    int nums[n];
     printf("enter array elements : \n");
     for(int i=0;i<n;i++)
     {
-        scanf("%d",(nums+i));
+        scanf("%d",&nums[i]);
     }
     int *res=sortArray(nums,n,&n);
     display(res,n);
