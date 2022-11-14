@@ -85,23 +85,27 @@ void display(struct ListNode *first)
         printf("]");
     }
 }
+
 void main()
 {
-    struct ListNode *first=NULL,*new,*res;
-    int n,i;
-    printf("enter no of lists : ");
-    scanf("%d",&n);
-    struct ListNode*lists[n];
-    for(i=0;i<n;i++)
+    struct ListNode *l;
+    int listsSize;
+    printf("Enter no of lists : ");
+    scanf("%d",&listsSize);
+    struct ListNode *lists[listsSize];
+    printf("enter list elements : \n");
+    for(int i=0;i<listsSize;i++)
     {
-        lists[i]=(struct ListNode*)(malloc(sizeof(struct ListNode)));
-
+        lists[i]=NULL;
+        lists[i]=create(lists[i]);
     }
-    for(i=0;i<n;i++)
+    l=mergeKLists(lists,listsSize);
+    if(l==NULL)
     {
-         new=(struct ListNode*)(malloc(sizeof(struct ListNode)));
-         lists[i]=create(first);
-    } 
-    res=mergeKLists(lists,n);
-    display(res);
+        printf("No lists found");
+    }
+    else
+    {
+        display(l);
+    }
 }
