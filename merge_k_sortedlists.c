@@ -102,7 +102,7 @@ void main()
     l=mergeKLists(lists,listsSize);
     if(l==NULL)
     {
-        printf("No lists found");
+        printf("[]");
     }
     else
     {
