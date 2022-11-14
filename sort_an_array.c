@@ -1,17 +1,9 @@
+#include <stdio.h>
+#include<stdlib.h>
 int* sortArray(int* nums, int numsSize, int* returnSize){
   *returnSize=numsSize;  
   mergesort(nums, 0, numsSize-1);
   return nums;
-}
-void mergesort(int* nums,int l,int h)
-{
-    if(l<h)
-    {
-        int m=(l+h)/2;
-        mergesort(nums,l,m);
-        mergesort(nums,m+1,h);
-        merge(nums,l,m,h);
-    }
 }
 void merge(int* nums, int l, int m, int r)
 {
@@ -58,4 +50,39 @@ void merge(int* nums, int l, int m, int r)
         j++;
         k++;
     }  
+}
+void mergesort(int* nums,int l,int h)
+{
+    if(l<h)
+    {
+        int m=(l+h)/2;
+        mergesort(nums,l,m);
+        mergesort(nums,m+1,h);
+        merge(nums,l,m,h);
+    }
+}
+
+void display(int *res,int n)
+{
+    int i=0;
+    printf("The resulted array is:");
+    for(i=0;i<n;i++)
+    {
+        printf("%d ",res[i]);
+    }
+}
+void main()
+{
+    int *nums;
+    int n;
+    printf("enter no of elements in array : ");
+    scanf("%d",&n);
+    nums=(int*)(malloc(n*sizeof(int)));
+    printf("enter array elements : \n");
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",(nums+i));
+    }
+    int *res=sortArray(nums,n,&n);
+    display(res,n);
 }
