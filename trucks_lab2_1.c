@@ -70,7 +70,4 @@ int main(){
         printf("\n");
     }
    printf("Maximum Units on a Trucks are:%d",maximumUnits(arr,r,&c,ts));
-   printf("\n");
-   return 0;
-   
 }
