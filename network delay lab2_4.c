@@ -9,6 +9,13 @@ int min(int a,int b)
     else
         return b;
 }
+int max1(int a,int b)
+{
+    if(a>b)
+        return a;
+    else
+        return b;
+}
 int networkDelayTime(int** times, int timesSize, int* timesColSize, int n, int k){
     int max=10000;
     int i,j,u,v,w;
@@ -35,7 +42,7 @@ int networkDelayTime(int** times, int timesSize, int* timesColSize, int n, int k
         {
             return -1;
         }
-        ans=fmax(ans,dist[i]);
+        ans=max1(ans,dist[i]);
     }
     return ans;
 }
@@ -59,5 +66,5 @@ int main()
         for (j = 0; j < tcs; j++)
             scanf("%d",&arr[i][j]);
     int ans=networkDelayTime(arr,ts,&tcs,n,k);
-    printf("Minimum time is : %d",ans);
+    printf("Minimum time is : %d \n",ans);
 }
